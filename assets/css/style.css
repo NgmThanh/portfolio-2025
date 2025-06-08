@@ -21,6 +21,7 @@ body {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 svg {
@@ -101,7 +102,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* ==================== CUSTOM CODE ==================== */
+/* ==================== GLOBAL ==================== */
 
 .global-nav {
   position: fixed;
@@ -112,14 +113,47 @@ body::-webkit-scrollbar-thumb {
   z-index: 1000;
 }
 
+.grid-left {
+  justify-self: start;
+}
+
+.grid-center {
+  justify-self: center;
+}
+
+.grid-right {
+  justify-self: end;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--primitives--8);
+}
+
+.label .blink-circle {
+  width: var(--primitives--12);
+  height: var(--primitives--12);
+  border-radius: 50%;
+  background-color: var(--color-neutral-500);
+  animation: blink 1.5s infinite;
+}
+
+.label .blink-circle.green {
+  background-color: var(--color-success-green);
+}
+
+/* ==================== CUSTOM CODE ==================== */
+
 #hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-
-#hero .hero-nav {}
 
 #hero .hero-img {
   position: absolute;
@@ -128,6 +162,7 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: -1;
 }
 
 #hero .hero-img img {
@@ -135,4 +170,58 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+#hero .hero-img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(19, 19, 19, 0.10) 0%, rgba(19, 19, 19, 0.10) 60%, rgba(19, 19, 19, 0.80) 100%);
+  pointer-events: none;
+}
+
+#hero .hero-nav {
+  position: relative;
+  padding: var(--spacing--3xs) var(--spacing--page-padding);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+#hero .hero-nav .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-neutral-500);
+  will-change: transform;
+}
+
+#hero .hero-content {
+  padding: var(--spacing--3xs) var(--spacing--page-padding) 0;
+  flex: 1;
+  display: flex;
+}
+
+#hero .hero-content h1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#hero .hero-content h1 div {
+  display: flex;
+  flex-direction: column;
+}
+
+#hero .hero-footer {
+  position: relative;
+  padding: var(--spacing--3xs) var(--spacing--page-padding);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
 }

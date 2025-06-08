@@ -24,9 +24,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="google" content="notranslate" />
 
+  <link rel="stylesheet" href="assets/css/normalize.css" />
   <link rel="stylesheet" href="assets/css/style-preset.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/normalize.css" />
+
   <link href="assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <link href="assets/webclip.png" rel="apple-touch-icon" />
 
@@ -38,7 +39,7 @@
 
 <body>
   <header>
-    <nav class="global-nav">
+    <nav class="global-nav" style="display: none;">
       <a href="#hero">Logo</a>
       <span>PARIS, FR 11:20 AM</span>
       <a href="#">Menu</a>
@@ -47,13 +48,31 @@
 
   <main>
     <section id="hero">
-      <nav class="hero-nav">
-        <a href="#hero">Logo</a>
-        <span>PARIS, FR 11:20 AM</span>
-        <a href="#">Menu</a>
-      </nav>
       <div class="hero-img">
         <img src="assets/img/hero-img.jpg" alt="hero image" />
+        <div class="hero-img-overlay"></div>
+      </div>
+      <nav class="hero-nav">
+        <a href="#hero" class="p-medium grid-left">Logo</a>
+        <span class="p-medium grid-center">PARIS, FR 11:20 AM</span>
+        <a href="#" class="p-medium grid-right">Menu</a>
+        <div class="border"></div>
+      </nav>
+      <div class="hero-content">
+        <h1>
+          <span class="heading-display">Desining</span>
+          <div>
+            <span class="heading-display-swap text-center">Memorable</span>
+            <span class="heading-display text-right">Experiences</span>
+          </div>
+        </h1>
+      </div>
+      <div class="hero-footer">
+        <div class="p-medium text-light-secondary grid-left">UI/UX Designer & Developer</div>
+        <div class="p-medium text-light-secondary grid-center">(Scroll to explore)</div>
+        <div class="p-medium text-light-secondary text-semibold grid-right label">
+          <div class="blink-circle green"></div>[OPEN FOR WORK]
+        </div>
       </div>
     </section>
   </main>
