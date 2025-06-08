@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Minh Thanh Design</title>
 
   <meta name="description"
@@ -24,9 +24,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="google" content="notranslate" />
 
+  <link rel="stylesheet" href="assets/css/style-preset.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link href="assets/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="assets/webclip.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link href="assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="assets/webclip.png" rel="apple-touch-icon" />
 
   <!-- Lenis (via CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
@@ -36,25 +38,23 @@
 
 <body>
   <header>
-    <h1>Your Name</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <nav class="global-nav">
+      <a href="#hero">Logo</a>
+      <span>PARIS, FR 11:20 AM</span>
+      <a href="#">Menu</a>
     </nav>
   </header>
+
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Short bio...</p>
-    </section>
-    <section id="projects">
-      <h2>Projects</h2>
-      <!-- Showcase your work -->
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email or contact form...</p>
+    <section id="hero">
+      <nav class="hero-nav">
+        <a href="#hero">Logo</a>
+        <span>PARIS, FR 11:20 AM</span>
+        <a href="#">Menu</a>
+      </nav>
+      <div class="hero-img">
+        <img src="assets/img/hero-img.jpg" alt="hero image" />
+      </div>
     </section>
   </main>
   <script src="assets/js/main.js"></script>
