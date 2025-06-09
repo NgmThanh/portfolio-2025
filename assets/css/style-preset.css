@@ -111,9 +111,13 @@
   --typography--font-size--h4: 2.5em;
   --typography--font-size--h5: 2em;
   --typography--font-size--h6: 1.5em;
-  --typography--font-size--text-large: max(18px, 1em);
+  /* --typography--font-size--text-large: max(18px, 1em);
   --typography--font-size--text-medium: max(16px, 0.875em);
-  --typography--font-size--text-small: max(14px, 0.75em);
+  --typography--font-size--text-small: max(14px, 0.75em); */
+  --typography--font-size--text-large: 1.25em;
+  --typography--font-size--text-medium: 1em;
+  --typography--font-size--text-small: 0.875em;
+
   --typography--font-size--weight-regular: 400;
   --typography--font-size--weight-medium: 500;
   --typography--font-size--weight-semi-bold: 600;
@@ -136,9 +140,9 @@
     --typography--font-size--h4: 1.75em;
     --typography--font-size--h5: 1.375em;
     --typography--font-size--h6: 1.125em;
-    --typography--font-size--text-large: max(18px, 1em);
+    /* --typography--font-size--text-large: max(18px, 1em);
     --typography--font-size--text-medium: max(16px, 0.875em);
-    --typography--font-size--text-small: max(14px, 0.75em);
+    --typography--font-size--text-small: max(14px, 0.75em); */
   }
 }
 
@@ -151,9 +155,9 @@
     --typography--font-size--h4: 1.5em;
     --typography--font-size--h5: 1.25em;
     --typography--font-size--h6: 1em;
-    --typography--font-size--text-large: max(18px, 1em);
+    /* --typography--font-size--text-large: max(18px, 1em);
     --typography--font-size--text-medium: max(16px, 0.875em);
-    --typography--font-size--text-small: max(14px, 0.75em);
+    --typography--font-size--text-small: max(14px, 0.75em); */
   }
 }
 
@@ -198,7 +202,7 @@
 /* Mobile Portrait */
 @media screen and (max-width: 479px) {
   :root {
-    --size-container-ideal: 600;
+    --size-container-ideal: 402;
     /* screen-size in design - no px */
     --size-container-min: 320px;
     --size-container-max: 479px;
