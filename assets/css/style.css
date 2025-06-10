@@ -128,7 +128,6 @@ body::-webkit-scrollbar-thumb {
 .label {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: var(--primitives--8);
 }
 
@@ -254,7 +253,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* ==================== CUSTOM CODE ==================== */
+/* ==================== HERO SECTION ==================== */
 
 #hero {
   position: relative;
@@ -327,4 +326,38 @@ body::-webkit-scrollbar-thumb {
 #hero .hero-content h1 div {
   display: flex;
   flex-direction: column;
+}
+
+/* ==================== ABOUT SECTION ==================== */
+
+#about {
+  width: 100%;
+  padding: var(--spacing--xl) var(--spacing--page-padding) var(--spacing--2xl);
+}
+
+.about-introduction {
+  margin-top: var(--spacing--xs);
+}
+
+.about-grid {
+  margin-top: var(--spacing--lg);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing--grid-gap);
+}
+
+.about-grid .about-img {
+  grid-area: 1 / 5 / 1 / 9;
+  aspect-ratio: 3 / 4;
+}
+
+.about-grid .about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius--md);
+}
+
+.about-grid .bio-text {
+  grid-area: 1 / 9 / 1 / 12;
 }
