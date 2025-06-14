@@ -114,7 +114,7 @@
   /* --typography--font-size--text-large: max(18px, 1em);
   --typography--font-size--text-medium: max(16px, 0.875em);
   --typography--font-size--text-small: max(14px, 0.75em); */
-  --typography--font-size--text-large: 1.25em;
+  --typography--font-size--text-large: 1.125em;
   --typography--font-size--text-medium: 1em;
   --typography--font-size--text-small: 0.875em;
 
@@ -171,7 +171,7 @@
 :root {
   --size-unit: 16;
   /* body font-size in design - no px */
-  --size-container-ideal: 1440;
+  --size-container-ideal: 1680;
   /* screen-size in design - no px */
   --size-container-min: 992px;
   --size-container-max: 1920px;
@@ -192,7 +192,7 @@
 /* Mobile Landscape */
 @media screen and (max-width: 767px) {
   :root {
-    --size-container-ideal: 550;
+    --size-container-ideal: 767;
     /* screen-size in design - no px */
     --size-container-min: 480px;
     --size-container-max: 767px;
@@ -202,7 +202,7 @@
 /* Mobile Portrait */
 @media screen and (max-width: 479px) {
   :root {
-    --size-container-ideal: 402;
+    --size-container-ideal: 420;
     /* screen-size in design - no px */
     --size-container-min: 320px;
     --size-container-max: 479px;
