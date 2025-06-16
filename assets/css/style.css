@@ -555,8 +555,64 @@ body::-webkit-scrollbar-thumb {
 
 #services {
   width: 100%;
-  padding: var(--spacing--2xl) var(--spacing--page-padding) var(--spacing--lg);
+  padding: var(--spacing--2xl) 0 var(--spacing--lg);
   background-color: var(--color-neutral-900);
+  position: relative;
+}
+
+#services .services-item {
+  border-top: 1px solid var(--color-neutral-500);
+}
+
+#services .services-list:last-child {
+  border-bottom: 1px solid var(--color-neutral-500);
+}
+
+#services .services-list .services-item-header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing--grid-gap);
+  padding: var(--spacing--2xs) var(--spacing--page-padding);
+}
+
+#services .services-list .services-item-header span {
+  grid-area: 1 / 1 / 1 / 5;
+}
+
+#services .services-list .services-item-header h4 {
+  grid-area: 1 / 5 / 1 / 13;
+}
+
+#services .services-list .services-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing--xs);
+  padding: var(--spacing--2xs) var(--spacing--page-padding) var(--spacing--2xl);
+}
+
+#services .services-list .services-item-content .description {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing--grid-gap);
+}
+
+#services .services-list .services-item-content .description span {
+  grid-area: 1 / 5 / 1 / 9;
+}
+
+#services .services-list .services-item-content .wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing--grid-gap);
+}
+
+#services .services-list .services-item-content .wrapper ul {
+  grid-area: 1 / 5 / 1 / 13;
+}
+
+#services .services-list .services-item-content ul li {
+  padding: var(--primitives--12) 0;
+  border-bottom: 1px solid var(--color-neutral-500);
 }
 
 /* ==================== SCROLL CONTACT SECTION ==================== */
