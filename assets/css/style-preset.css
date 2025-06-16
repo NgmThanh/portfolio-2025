@@ -8,42 +8,6 @@
   font-display: swap;
 }
 
-/* @font-face {
-  font-family: Bevietnampro;
-  src: url("../fonts/BeVietnamPro-Regular.woff") format("woff"),
-    url("../fonts/BeVietnamPro-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Bevietnampro;
-  src: url("../fonts/BeVietnamPro-Medium.woff") format("woff"),
-    url("../fonts/BeVietnamPro-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Bevietnampro;
-  src: url("../fonts/BeVietnamPro-SemiBold.woff") format("woff"),
-    url("../fonts/BeVietnamPro-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Bevietnampro;
-  src: url("../fonts/BeVietnamPro-Bold.woff") format("woff"),
-    url("../fonts/BeVietnamPro-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-} */
-
 @font-face {
   font-family: "Bevietnampro";
   src: url("../fonts/BeVietnamPro-Variable.ttf") format("woff2 supports variations"),
