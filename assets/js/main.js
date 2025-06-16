@@ -96,7 +96,7 @@ function zoomInMaskOnScroll() {
     opacity: 0,
     duration: 1,
     ease: 'none'
-  });
+  }), "<";
 
   tl.to('body', {
     duration: 1
