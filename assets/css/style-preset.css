@@ -8,7 +8,7 @@
   font-display: swap;
 }
 
-@font-face {
+/* @font-face {
   font-family: Bevietnampro;
   src: url("../fonts/BeVietnamPro-Regular.woff") format("woff"),
     url("../fonts/BeVietnamPro-Regular.ttf") format("truetype");
@@ -42,6 +42,13 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+} */
+
+@font-face {
+  font-family: "Bevietnampro";
+  src: url("../fonts/BeVietnamPro-Variable.ttf") format("woff2 supports variations"),
+    url("../fonts/BeVietnamPro-Variable.ttf") format("woff2-variations");
+  font-weight: 100 1000;
 }
 
 /* ==================== VARIABLES ==================== */

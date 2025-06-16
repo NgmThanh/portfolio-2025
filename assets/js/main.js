@@ -10,6 +10,7 @@ const durationDefault = 1.2;
 function initScript() {
   initScrollHighlight();
   initTextRevealAnimation();
+  zoomInMaskOnScroll();
 }
 
 /**
@@ -18,7 +19,7 @@ function initScript() {
 function initScrollHighlight() {
   const splitElements = document.querySelectorAll('[scroll-highlight]');
 
-  splitElements.forEach((element, i) => {
+  splitElements.forEach((element) => {
     const splitText = new SplitText(element, { type: "chars,words" });
     gsap.from(splitText.chars, {
       scrollTrigger: {
@@ -63,6 +64,23 @@ function initTextRevealAnimation() {
         stagger: staggerTextReveal,
       });
     });
+  });
+}
+
+/**
+ * Zoom in effect on scroll contact
+ */
+function zoomInMaskOnScroll() {
+  gsap.to(".text-scroll", {
+    scale: 200,
+    scrollTrigger: {
+      trigger: "#scroll-contact",
+      scrub: 1,
+      pin: true,
+      start: "top top",
+      end: "+=1000",
+      ease: "none"
+    },
   });
 }
 
