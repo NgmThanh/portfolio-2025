@@ -689,12 +689,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 #scroll-contact .contact-img {
-  position: fixed;
-  z-index: -1;
-  inset: 0;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(35% 25%, 65% 25%, 65% 75%, 35% 75%);
 }
 
 #scroll-contact .contact-img img {
@@ -703,19 +704,13 @@ body::-webkit-scrollbar-thumb {
   object-fit: cover;
 }
 
-#scroll-contact .mask {
-  height: 100svh;
-  width: 100%;
-  background: var(--color-neutral-900);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  mix-blend-mode: multiply;
-}
-
 #scroll-contact .text-scroll {
   font-size: 10vw !important;
   text-wrap: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #scroll-contact .text-scroll .heading-display-swap {

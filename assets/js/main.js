@@ -71,17 +71,38 @@ function initTextRevealAnimation() {
  * Zoom in effect on scroll contact
  */
 function zoomInMaskOnScroll() {
-  gsap.to(".text-scroll", {
-    scale: 200,
+  let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#scroll-contact",
-      scrub: 1,
+      trigger: '#scroll-contact',
+      start: 'top top',
+      end: '+=350%',
+      markers: true,
       pin: true,
-      start: "top top",
-      end: "+=1000",
-      ease: "none"
-    },
+      scrub: 0.5
+    }
   });
+
+  tl.to('body', {
+    duration: 0.5
+  });
+
+  tl.to('.contact-img', {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    duration: 2,
+    ease: 'none'
+  });
+
+  tl.to('.text-scroll', {
+    opacity: 0,
+    duration: 1,
+    ease: 'none'
+  });
+
+  tl.to('body', {
+    duration: 1
+  });
+
+  // TODO : responsive version
 }
 
 /**
@@ -95,6 +116,6 @@ window.addEventListener("resize", () => {
   ScrollTrigger.refresh();
 });
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+// window.onbeforeunload = function () {
+//   window.scrollTo(0, 0);
+// }
