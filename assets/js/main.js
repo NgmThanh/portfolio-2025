@@ -9,6 +9,7 @@ const durationDefault = 1.2;
 */
 function initScript() {
   initSmoothScroll();
+  InitParallaxEffect();
   initScrollHighlight();
   initTextRevealAnimation();
   zoomInMaskOnScroll();
@@ -22,6 +23,24 @@ function initSmoothScroll() {
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
+}
+
+/**
+* Parallax effect on scroll
+*/
+function InitParallaxEffect() {
+  // apply parallax effect to any element with a data-speed attribute
+  gsap.to("[data-speed]", {
+    y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed"))) * document.body.offsetHeight,
+    ease: "none",
+    scrollTrigger: {
+      trigger: document.body,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0,
+      invalidateOnRefresh: true
+    }
+  });
 }
 
 /**
