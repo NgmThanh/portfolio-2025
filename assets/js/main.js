@@ -18,19 +18,9 @@ function initScript() {
 * Smooth scroll with Lenis Scroll
 */
 function initSmoothScroll() {
-  // Initialize a new Lenis instance for smooth scrolling
   const lenis = new Lenis();
-
-  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
   lenis.on('scroll', ScrollTrigger.update);
-
-  // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
-  });
-
-  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 }
 
@@ -47,13 +37,13 @@ function initScrollHighlight() {
         trigger: element,
         start: 'top 80%',
         end: 'bottom 50%',
-        scrub: 1.1,
-        markers: false
+        scrub: 1,
+        markers: false,
       },
       duration: 6,
       opacity: 0.2,
-      stagger: 0.3,
-      ease: "power3.inOut"
+      stagger: 0.2,
+      ease: "none"
     })
   });
 }
@@ -107,8 +97,11 @@ function zoomInMaskOnScroll() {
     duration: 0.5
   });
 
-  tl.to('.contact-img', {
+  tl.fromTo('.contact-img', {
+    scale: 1.1,
+  }, {
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    scale: 1,
     duration: 2,
     ease: 'none'
   });
