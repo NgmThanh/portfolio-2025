@@ -265,7 +265,6 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  z-index: -1;
 }
 
 .hero-container {
@@ -340,48 +339,18 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
 }
 
-/* ==================== STORYTELLING SECTION ==================== */
-
-#storytelling {
-  width: 100%;
-  height: 100svh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 var(--spacing--page-padding);
-  background-color: var(--color-neutral-900);
-}
-
-.storytelling-title {
-  width: 100%;
-  display: block;
-}
-
-.storytelling-title span {
-  display: block;
-  overflow: hidden;
-}
-
-.storytelling-title .wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-#storytelling .wrap span {
-  display: inline-block;
-}
-
 /* ==================== ABOUT SECTION ==================== */
 
 #about {
   width: 100%;
   padding: var(--spacing--xl) var(--spacing--page-padding) var(--spacing--2xl);
   background-color: var(--color-neutral-900);
+  position: relative;
+  z-index: 2;
 }
 
 .about-introduction {
   width: 100%;
-  /* margin-top: var(--spacing--xs); */
 }
 
 .about-grid {
@@ -444,12 +413,70 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+/* ==================== STORYTELLING SECTION ==================== */
+
+#storytelling {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--spacing--page-padding);
+  background-color: var(--color-neutral-900);
+  position: relative;
+  z-index: 2;
+}
+
+.storytelling-title {
+  width: 100%;
+  display: block;
+}
+
+.storytelling-title span {
+  display: block;
+  overflow: hidden;
+}
+
+.storytelling-title .wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+#storytelling .wrap span {
+  display: inline-block;
+}
+
+.storytelling-img {
+  position: absolute;
+  z-index: -1;
+}
+
+.storytelling-img.img-1 {
+  width: 12.5em;
+  top: 40%;
+  left: 10%;
+}
+
+.storytelling-img.img-2 {
+  width: 12.5em;
+  top: 60%;
+  right: 10%;
+}
+
+.storytelling-img.img-3 {
+  width: 12.5em;
+  bottom: 15%;
+  left: 40%;
+}
+
 /* ==================== WORKS SECTION ==================== */
 
 #works {
   width: 100%;
   padding: var(--spacing--lg) var(--spacing--page-padding) var(--spacing--3xl);
   background-color: var(--color-neutral-100);
+  position: relative;
+  z-index: 2;
 }
 
 #works h2 {
@@ -591,6 +618,7 @@ body::-webkit-scrollbar-thumb {
   padding: var(--spacing--2xl) 0 var(--spacing--lg);
   background-color: var(--color-neutral-900);
   position: relative;
+  z-index: 2;
 }
 
 .services-item {
@@ -738,42 +766,44 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* ==================== SCROLL CONTACT SECTION ==================== */
+/* ==================== SHAPE SCROLL SECTION ==================== */
 
-#scroll-contact {
+#shape-scroll {
   width: 100%;
   height: 100svh;
   position: relative;
   overflow: hidden;
   background-color: var(--color-neutral-900);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contact-img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.masked-img-container {
   width: 100%;
-  height: 100%;
+  height: 100svh;
+  position: absolute;
+  mask-image: url(../img/david-shape.svg);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 0%;
+  -webkit-mask-image: url(../img/david-shape.svg);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 0%;
   overflow: hidden;
-  clip-path: polygon(35% 25%, 65% 25%, 65% 75%, 35% 75%);
 }
 
-.contact-img img {
+.masked-img-container img.masked-img {
   width: 100%;
   height: 100%;
+  transform: scale(1.2);
   object-fit: cover;
+  object-position: center;
 }
 
-.text-scroll {
-  font-size: 10vw !important;
-  text-wrap: nowrap;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#scroll-contact .heading-display-swap {
+#shape-scroll .heading-display-swap {
   font-size: inherit;
 }
 
@@ -785,6 +815,8 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-content {

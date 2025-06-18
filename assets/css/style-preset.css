@@ -94,6 +94,7 @@
   --typography--font-size--weight-semi-bold: 600;
   --typography--font-size--weight-bold: 700;
   --typography--line-height--line-height-heading: 100%;
+  --typography--line-height--line-height-heading-swap: 110%;
   --typography--line-height--line-height-text: 140%;
   --typography--letter-spacing--negative-lg: -0.04em;
   --typography--letter-spacing--negative-sm: -0.02em;
@@ -201,7 +202,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--display);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -220,7 +221,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h1);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -239,7 +240,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h2);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -258,7 +259,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h3);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -277,7 +278,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h4);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -296,7 +297,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h5);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }
@@ -315,7 +316,7 @@ body {
   font-family: var(--typography--font-family--heading-family-swap);
   color: var(--color-neutral-100);
   font-size: var(--typography--font-size--h6);
-  line-height: var(--typography--line-height--line-height-heading);
+  line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
 }

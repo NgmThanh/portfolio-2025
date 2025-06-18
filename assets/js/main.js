@@ -10,6 +10,7 @@ const durationDefault = 1.2;
 */
 function initScript() {
   initSmoothScroll();
+  initClock();
   initParallaxEffect();
   initScrollHighlight();
   initStorytellingScroll();
@@ -25,6 +26,30 @@ function initSmoothScroll() {
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
+}
+
+/**
+* Dynamic Paris Clock with Smooth Blinking Colon
+*/
+function initClock() {
+  function updateClock() {
+    const now = new Date();
+    const options = {
+      timeZone: 'Europe/Paris',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    };
+
+    const time = new Intl.DateTimeFormat('en-US', options).format(now);
+
+    document.querySelectorAll('[data-clock]').forEach((el) => {
+      el.textContent = `Paris, FR - ${time}`;
+    });
+  }
+
+  updateClock();
+  setInterval(updateClock, 10000);
 }
 
 /**
@@ -44,22 +69,6 @@ function initParallaxEffect() {
       invalidateOnRefresh: true
     }
   });
-
-  // const footer = document.querySelector('#footer');
-
-
-  // // apply parallax effect to any element with a data-speed attribute
-  // gsap.to("[data-speed-footer]", {
-  //   y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed-footer"))) * footer.offsetHeight,
-  //   ease: "none",
-  //   scrollTrigger: {
-  //     trigger: footer,
-  //     start: "top bottom",
-  //     // end: "bottom bottom",
-  //     scrub: 0,
-  //     invalidateOnRefresh: true
-  //   }
-  // });
 }
 
 /**
@@ -81,7 +90,7 @@ function initScrollHighlight() {
         duration: 6,
         opacity: 0.2,
         stagger: 0.2,
-        ease: "none"
+        ease: "none",
       })
     });
   });
@@ -182,41 +191,36 @@ function initTextRevealAnimation() {
  * Zoom in effect on scroll contact
  */
 function zoomInMaskOnScroll() {
-  let tl = gsap.timeline({
+  const container = document.querySelector(".masked-img-container");
+  const img = document.querySelector(".masked-img");
+
+  let tl = gsap.timeline();
+
+  tl.to(container, {
     scrollTrigger: {
-      trigger: '#scroll-contact',
-      start: 'top top',
-      end: '+=350%',
-      markers: true,
+      trigger: "#shape-scroll",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+      markers: true
+    },
+    maskSize: "300%",
+    webkitMaskSize: "300%",
+    ease: "power4.in"
+  });
+
+  tl.to(img, {
+    scrollTrigger: {
+      trigger: "#shape-scroll",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
       pin: true,
-      scrub: 0.5
-    }
-  });
-
-  tl.to('body', {
-    duration: 0.5
-  });
-
-  tl.fromTo('.contact-img', {
-    scale: 1.1,
-  }, {
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      markers: true
+    },
     scale: 1,
-    duration: 2,
-    ease: 'none'
+    ease: "none"
   });
-
-  tl.to('.text-scroll', {
-    opacity: 0,
-    duration: 1,
-    ease: 'none'
-  }), "<";
-
-  tl.to('body', {
-    duration: 1
-  });
-
-  // TODO : responsive version
 }
 
 /**
@@ -224,9 +228,8 @@ function zoomInMaskOnScroll() {
 */
 initScript();
 
-// On resize, relaunch horizontal scroll
+// On resize, relaunch scrollTrigger
 window.addEventListener("resize", () => {
-  initScrollHighlight();
   ScrollTrigger.refresh();
 });
 
