@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
-const staggerDefault = 0.1;
+const staggerTitleDefault = 0.015;
+const durationTitleDefault = 1.5;
 const staggerTextReveal = 0.005;
 const durationDefault = 1.2;
 
@@ -9,8 +10,9 @@ const durationDefault = 1.2;
 */
 function initScript() {
   initSmoothScroll();
-  InitParallaxEffect();
+  initParallaxEffect();
   initScrollHighlight();
+  initStorytellingScroll();
   initTextRevealAnimation();
   zoomInMaskOnScroll();
 }
@@ -28,19 +30,36 @@ function initSmoothScroll() {
 /**
 * Parallax effect on scroll
 */
-function InitParallaxEffect() {
-  // apply parallax effect to any element with a data-speed attribute
-  gsap.to("[data-speed]", {
-    y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed"))) * document.body.offsetHeight,
+function initParallaxEffect() {
+  // apply parallax effect to hero section
+  const heroSection = document.querySelector('#hero');
+
+  gsap.to("[data-speed-hero]", {
+    y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed-hero"))) * heroSection.offsetHeight,
     ease: "none",
     scrollTrigger: {
-      trigger: document.body,
+      trigger: heroSection,
       start: "top top",
-      end: "bottom bottom",
       scrub: 0,
       invalidateOnRefresh: true
     }
   });
+
+  // const footer = document.querySelector('#footer');
+
+
+  // // apply parallax effect to any element with a data-speed attribute
+  // gsap.to("[data-speed-footer]", {
+  //   y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed-footer"))) * footer.offsetHeight,
+  //   ease: "none",
+  //   scrollTrigger: {
+  //     trigger: footer,
+  //     start: "top bottom",
+  //     // end: "bottom bottom",
+  //     scrub: 0,
+  //     invalidateOnRefresh: true
+  //   }
+  // });
 }
 
 /**
@@ -49,21 +68,81 @@ function InitParallaxEffect() {
 function initScrollHighlight() {
   const splitElements = document.querySelectorAll('[scroll-highlight]');
 
-  splitElements.forEach((element) => {
-    const splitText = new SplitText(element, { type: "chars,words" });
-    gsap.from(splitText.chars, {
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 80%',
-        end: 'bottom 50%',
-        scrub: 1,
-        markers: false,
-      },
-      duration: 6,
-      opacity: 0.2,
-      stagger: 0.2,
-      ease: "none"
-    })
+  document.fonts.ready.then(() => {
+    splitElements.forEach((el) => {
+      const split = new SplitText(el, { type: "chars,words" });
+      gsap.from(split.chars, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          end: 'bottom 50%',
+          scrub: 1,
+        },
+        duration: 6,
+        opacity: 0.2,
+        stagger: 0.2,
+        ease: "none"
+      })
+    });
+  });
+}
+
+/**
+* Storytelling scroll animations
+*/
+function initStorytellingScroll() {
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#storytelling',
+      start: 'top top',
+      end: '+=400%',
+      markers: true,
+      pin: true,
+      scrub: 0.5
+    }
+  });
+
+  // Storytelling title reveal animation
+  const splitTitle = document.querySelectorAll('.storytelling-title');
+
+  document.fonts.ready.then(() => {
+    splitTitle.forEach((el) => {
+      const split = new SplitText(el, { type: "chars,words" });
+
+      tl.fromTo(split.chars, {
+        opacity: 0,
+        yPercent: 100,
+        markers: true,
+      }, {
+        opacity: 1,
+        yPercent: 0,
+        duration: durationTitleDefault,
+        stagger: staggerTitleDefault,
+        ease: "power2.out",
+      }, 0);
+    });
+  });
+
+  tl.to('body', {
+    duration: 2
+  });
+
+  // Storytelling title fade out animation
+  document.fonts.ready.then(() => {
+    splitTitle.forEach((el) => {
+      const split = new SplitText(el, { type: "chars,words" });
+
+      tl.to(split.chars, {
+        opacity: 0,
+        duration: 0.5,
+        stagger: staggerTitleDefault,
+        ease: "power2.out",
+      });
+    });
+  });
+
+  tl.to('body', {
+    duration: 1
   });
 }
 
@@ -71,8 +150,10 @@ function initScrollHighlight() {
 * Text reveal animations with scrollTrigger
 */
 function initTextRevealAnimation() {
+  const splitElements = document.querySelectorAll('[text-reveal]');
+
   document.fonts.ready.then(() => {
-    document.querySelectorAll('[text-scroll-appear]').forEach(el => {
+    splitElements.forEach(el => {
       const split = new SplitText(el, {
         type: "chars, words, lines",
         charsClass: "char-js",
