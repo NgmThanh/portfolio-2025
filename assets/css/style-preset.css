@@ -196,6 +196,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-display-swap {
@@ -205,6 +206,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h1 {
@@ -215,6 +217,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h1-swap {
@@ -224,6 +227,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h2 {
@@ -234,6 +238,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h2-swap {
@@ -243,6 +248,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h3 {
@@ -253,6 +259,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h3-swap {
@@ -262,6 +269,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h4 {
@@ -272,6 +280,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h4-swap {
@@ -281,6 +290,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h5 {
@@ -291,6 +301,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h5-swap {
@@ -300,6 +311,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .heading-h6 {
@@ -310,6 +322,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .heading-h6-swap {
@@ -319,6 +332,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
+  overflow: hidden;
 }
 
 .p-large {
@@ -431,4 +445,29 @@ body {
   letter-spacing: var(--typography--letter-spacing--normal);
   margin: 0;
   padding: 0;
+}
+
+/* ==================== LENIS SMOOTH SCROLL ==================== */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
 }

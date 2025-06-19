@@ -793,6 +793,7 @@ body::-webkit-scrollbar-thumb {
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 0%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .masked-img-container img.masked-img {
@@ -801,6 +802,10 @@ body::-webkit-scrollbar-thumb {
   transform: scale(1.2);
   object-fit: cover;
   object-position: center;
+}
+
+.masked-img-container .heading-display {
+  z-index: 0;
 }
 
 #shape-scroll .heading-display-swap {
