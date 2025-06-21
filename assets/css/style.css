@@ -457,18 +457,26 @@ body::-webkit-scrollbar-thumb {
 }
 
 .horizontal-scroll {
-  position: relative;
-  height: 100svh;
+  display: flex;
 }
 
-.scroll-track {
+.horizontal-scroll .horizontal-item {
+  position: relative;
+  height: 100svh;
+  width: 100vw;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+}
+
+.sticky-labels {
+  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  position: absolute;
 }
 
 .works-label {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: var(--spacing--page-padding);
   transform: translateY(-50%);
@@ -476,7 +484,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .works-number {
-  position: fixed;
+  position: absolute;
   top: 50%;
   right: var(--spacing--page-padding);
   transform: translateY(-50%);
@@ -485,7 +493,7 @@ body::-webkit-scrollbar-thumb {
 
 .works-title-container {
   height: var(--typography--font-size--h1);
-  position: fixed;
+  position: absolute;
   bottom: var(--spacing--3xs);
   left: 50%;
   transform: translateX(-50%);
@@ -503,18 +511,6 @@ body::-webkit-scrollbar-thumb {
 
 .works-title {
   text-wrap: nowrap;
-}
-
-.scroll-track .track-item {
-  flex: none;
-  width: 100vw;
-  height: 100%;
-  padding: var(--spacing--3xs) var(--spacing--page-padding);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .works-item {

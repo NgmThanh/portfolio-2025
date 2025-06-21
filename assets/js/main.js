@@ -1,7 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
 const staggerTitleDefault = 0.015;
-const durationTitleDefault = 2;
+const durationTitleDefault = 1.5;
 const staggerTextReveal = 0.005;
 const durationDefault = 1.2;
 
@@ -53,6 +53,28 @@ function initSmoothScroll() {
       }
     })
   });
+}
+
+/**
+* Works list horizontal scroll
+*/
+function initHorizontalScroll() {
+  const content = gsap.utils.toArray(".horizontal-scroll .horizontal-item");
+
+  if (window.innerWidth > 767) {
+    gsap.to(content, {
+      xPercent: -100 * (content.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-scroll",
+        pin: true,
+        scrub: 0.5,
+        start: "top top",
+        end: () => `+=${100 * (content.length)}%`,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
 }
 
 /**
@@ -166,7 +188,6 @@ function initStorytellingScroll() {
       tl.fromTo(split.chars, {
         opacity: 0.4,
         yPercent: 125,
-        markers: true,
       }, {
         opacity: 1,
         yPercent: 0,
@@ -175,49 +196,19 @@ function initStorytellingScroll() {
         ease: "power3.out",
       });
 
-      tl.to('body', {
-        duration: 1
-      });
-
       // Storytelling title fade out animation
-      tl.to(split.words, {
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: "power2.out",
-      }, "<");
+      // tl.to(split.words, {
+      //   opacity: 0,
+      //   duration: 0.5,
+      //   stagger: 0.2,
+      //   ease: "power2.out",
+      // }, "<");
 
       tl.to('body', {
-        duration: 1
+        duration: 1,
       });
     });
   });
-}
-
-/**
-* Works list horizontal scroll
-*/
-function initHorizontalScroll() {
-  const track = document.querySelector(".scroll-track");
-
-  // clean old ScrollTriggers and animations
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  gsap.killTweensOf(track);
-
-  if (window.innerWidth > 767) {
-    gsap.to(track, {
-      x: () => -(track.scrollWidth - window.innerWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".horizontal-scroll",
-        start: "top top",
-        end: () => `+=${track.scrollWidth - window.innerWidth}`,
-        pin: true,
-        scrub: 0,
-        invalidateOnRefresh: true,
-      },
-    });
-  }
 }
 
 /**
