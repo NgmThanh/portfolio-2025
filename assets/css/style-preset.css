@@ -94,7 +94,7 @@
   --typography--font-size--weight-semi-bold: 600;
   --typography--font-size--weight-bold: 700;
   --typography--line-height--line-height-heading: 100%;
-  --typography--line-height--line-height-heading-swap: 110%;
+  --typography--line-height--line-height-heading-swap: 120%;
   --typography--line-height--line-height-text: 140%;
   --typography--letter-spacing--negative-lg: -0.04em;
   --typography--letter-spacing--negative-sm: -0.02em;
@@ -196,7 +196,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-display-swap {
@@ -206,7 +206,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h1 {
@@ -217,7 +217,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h1-swap {
@@ -227,7 +227,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h2 {
@@ -238,7 +238,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h2-swap {
@@ -248,7 +248,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h3 {
@@ -259,7 +259,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h3-swap {
@@ -269,7 +269,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h4 {
@@ -280,7 +280,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h4-swap {
@@ -290,7 +290,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h5 {
@@ -301,7 +301,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h5-swap {
@@ -311,7 +311,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h6 {
@@ -322,7 +322,7 @@ body {
   font-weight: var(--typography--font-size--weight-semi-bold);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
   text-transform: uppercase;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .heading-h6-swap {
@@ -332,7 +332,7 @@ body {
   line-height: var(--typography--line-height--line-height-heading-swap);
   font-weight: var(--typography--font-size--weight-regular);
   letter-spacing: var(--typography--letter-spacing--negative-lg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .p-large {
@@ -445,6 +445,10 @@ body {
   letter-spacing: var(--typography--letter-spacing--normal);
   margin: 0;
   padding: 0;
+}
+
+.line-js {
+  overflow: hidden;
 }
 
 /* ==================== LENIS SMOOTH SCROLL ==================== */

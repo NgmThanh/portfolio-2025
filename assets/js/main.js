@@ -1,7 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
 const staggerTitleDefault = 0.015;
-const durationTitleDefault = 1.2;
+const durationTitleDefault = 2;
 const staggerTextReveal = 0.005;
 const durationDefault = 1.2;
 
@@ -14,6 +14,7 @@ function initScript() {
   initParallaxEffect();
   initScrollHighlight();
   initStorytellingScroll();
+  initHorizontalScroll();
   initShapeMaskSection();
 }
 
@@ -84,6 +85,7 @@ function initClock() {
 function initParallaxEffect() {
   // apply parallax effect to hero section
   const heroSection = document.querySelector('#hero');
+  const heroBackground = document.querySelector('.hero-img');
 
   gsap.to("[data-speed-hero]", {
     y: (i, el) => (-1 * parseFloat(el.getAttribute("data-speed-hero"))) * heroSection.offsetHeight,
@@ -92,6 +94,20 @@ function initParallaxEffect() {
       trigger: heroSection,
       start: "top top",
       scrub: 0,
+      invalidateOnRefresh: true
+    }
+  });
+
+  gsap.fromTo(heroBackground, {
+    filter: "brightness(1)",
+  }, {
+    filter: "brightness(0.2)",
+    ease: "none",
+    scrollTrigger: {
+      trigger: heroSection,
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.3,
       invalidateOnRefresh: true
     }
   });
@@ -137,81 +153,72 @@ function initStorytellingScroll() {
     }
   });
 
-  // Storytelling title reveal animation
   const splitTitle = document.querySelectorAll('.storytelling-title');
 
   document.fonts.ready.then(() => {
     splitTitle.forEach((el) => {
-      const split = new SplitText(el, { type: "chars,words" });
+      const split = new SplitText(el, {
+        type: "chars, words, lines",
+        linesClass: "line-js",
+      });
 
+      // Storytelling title reveal animation
       tl.fromTo(split.chars, {
-        opacity: 0,
-        yPercent: 100,
+        opacity: 0.4,
+        yPercent: 125,
         markers: true,
       }, {
         opacity: 1,
         yPercent: 0,
         duration: durationTitleDefault,
         stagger: staggerTitleDefault,
-        ease: "power2.out",
-      }, 0);
-    });
-  });
+        ease: "power3.out",
+      });
 
-  tl.to('body', {
-    duration: 1
-  });
+      tl.to('body', {
+        duration: 1
+      });
 
-  // Storytelling title fade out animation
-  document.fonts.ready.then(() => {
-    splitTitle.forEach((el) => {
-      const split = new SplitText(el, { type: "chars,words" });
-
-      tl.to(split.chars, {
+      // Storytelling title fade out animation
+      tl.to(split.words, {
         opacity: 0,
         duration: 0.5,
-        stagger: staggerTitleDefault,
+        stagger: 0.2,
         ease: "power2.out",
+      }, "<");
+
+      tl.to('body', {
+        duration: 1
       });
     });
-  });
-
-  tl.to('body', {
-    duration: 1
   });
 }
 
 /**
-* Text reveal animations with scrollTrigger
+* Works list horizontal scroll
 */
-// function initTextRevealAnimation() {
-//   const splitElements = document.querySelectorAll('[text-reveal]');
+function initHorizontalScroll() {
+  const track = document.querySelector(".scroll-track");
 
-//   document.fonts.ready.then(() => {
-//     splitElements.forEach(el => {
-//       const split = new SplitText(el, {
-//         type: "chars, words, lines",
-//         charsClass: "char-js",
-//         wordsClass: "word-js",
-//         linesClass: "line-js"
-//       });
+  // clean old ScrollTriggers and animations
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  gsap.killTweensOf(track);
 
-//       gsap.from(split.chars, {
-//         scrollTrigger: {
-//           trigger: el,
-//           start: "top 65%",
-//           toggleActions: "play none none none",
-//           once: true
-//         },
-//         duration: durationDefault,
-//         opacity: 0,
-//         yPercent: 100,
-//         ease: "power4.out",
-//         stagger: staggerTextReveal,
-//       });
-//     });
-//   });
-// }
+  if (window.innerWidth > 767) {
+    gsap.to(track, {
+      x: () => -(track.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-scroll",
+        start: "top top",
+        end: () => `+=${track.scrollWidth - window.innerWidth}`,
+        pin: true,
+        scrub: 0,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
+}
 
 /**
  * Zoom in effect on scroll contact
@@ -236,18 +243,22 @@ function initShapeMaskSection() {
 
   document.fonts.ready.then(() => {
     splitTitle.forEach((el) => {
-      const split = new SplitText(el, { type: "chars,words" });
+      const split = new SplitText(el, {
+        type: "chars, words, lines",
+        linesClass: "line-js",
+      });
 
       tl.fromTo(split.chars, {
         opacity: 0,
-        yPercent: 100,
+        yPercent: 150,
         markers: true,
       }, {
+        scale: 1,
         opacity: 1,
         yPercent: 0,
-        duration: durationTitleDefault,
+        duration: 2,
         stagger: staggerTitleDefault,
-        ease: "power2.out",
+        ease: "power3.out",
       }, 0);
     });
   });
