@@ -196,16 +196,12 @@ function initStorytellingScroll() {
         ease: "power3.out",
       });
 
-      // Storytelling title fade out animation
-      // tl.to(split.words, {
-      //   opacity: 0,
-      //   duration: 0.5,
-      //   stagger: 0.2,
-      //   ease: "power2.out",
-      // }, "<");
-
-      tl.to('body', {
+      tl.fromTo('.circle-transition', {
+        scale: 0,
+      }, {
         duration: 1,
+        scale: 50,
+        ease: "none",
       });
     });
   });

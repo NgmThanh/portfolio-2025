@@ -456,6 +456,7 @@ body {
 html.lenis,
 html.lenis body {
   height: auto;
+  overflow-x: hidden;
 }
 
 .lenis:not(.lenis-autoToggle).lenis-stopped {

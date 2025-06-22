@@ -446,6 +446,17 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
 }
 
+#storytelling .circle-transition {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: var(--color-neutral-700);
+  border-radius: 50%;
+}
+
 /* ==================== WORKS SECTION ==================== */
 
 #works {
@@ -556,6 +567,20 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
   background-color: red;
+}
+
+.services-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: brightness(60%);
+}
+
+.services-bg-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .services-list {
