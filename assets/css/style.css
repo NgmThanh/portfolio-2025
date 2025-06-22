@@ -660,6 +660,24 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+/* ==================== ACTION SECTION ==================== */
+
+#action {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-neutral-900);
+  position: relative;
+  z-index: 2;
+}
+
+#action .heading-display-swap {
+  font-size: inherit;
+  text-transform: none;
+}
+
 /* ==================== SHAPE SCROLL SECTION ==================== */
 
 #shape-scroll {

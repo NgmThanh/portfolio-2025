@@ -140,6 +140,7 @@ function initParallaxEffect() {
 */
 function initScrollHighlight() {
   const splitElements = document.querySelectorAll('[data-scroll-highlight]');
+  const splitElementsPinned = document.querySelectorAll('[data-scroll-highlight-pin]');
 
   document.fonts.ready.then(() => {
     splitElements.forEach((el) => {
@@ -151,7 +152,26 @@ function initScrollHighlight() {
           end: 'bottom 50%',
           scrub: 1,
         },
-        duration: 6,
+        duration: 3,
+        opacity: 0.2,
+        stagger: 0.2,
+        ease: "none",
+      })
+    });
+  });
+
+  document.fonts.ready.then(() => {
+    splitElementsPinned.forEach((el) => {
+      const split = new SplitText(el, { type: "chars,words" });
+      gsap.from(split.chars, {
+        scrollTrigger: {
+          trigger: "#action",
+          start: 'top top',
+          end: '+=300%',
+          scrub: 1,
+          pin: true,
+        },
+        duration: 3,
         opacity: 0.2,
         stagger: 0.2,
         ease: "none",
