@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const staggerTitleDefault = 0.015;
 const durationTitleDefault = 1.5;
@@ -9,7 +9,7 @@ const durationDefault = 1.2;
 * Fire all scripts on page load
 */
 function initScript() {
-  initSmoothScroll();
+  // initSmoothScroll();
   initClock();
   initParallaxEffect();
   initScrollHighlight();
@@ -22,39 +22,39 @@ function initScript() {
 /**
 * Smooth scroll with Lenis Scroll
 */
-function initSmoothScroll() {
-  const lenis = new Lenis({
-    duration: 1.2,
-    smooth: true,
-    smoothTouch: true,
-    mouseMultiplier: 0.8,
-    touchMultiplier: 1.2,
-    syncTouch: true,
-    syncTouchLerp: 0.08,
-    touchInertiaMultiplier: 12,
-    infinite: false,
-  });
+// function initSmoothScroll() {
+const lenis = new Lenis({
+  duration: 1.2,
+  smooth: true,
+  smoothTouch: true,
+  mouseMultiplier: 0.8,
+  touchMultiplier: 1.2,
+  syncTouch: true,
+  syncTouchLerp: 0.08,
+  touchInertiaMultiplier: 12,
+  infinite: false,
+});
 
-  // GSAP and ScrollTrigger integration with Lenis
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
+// GSAP and ScrollTrigger integration with Lenis
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
 
-  // Gestion des liens d'ancrage
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault()
-      const target = document.querySelector(this.getAttribute('href'))
-      if (target) {
-        lenis.scrollTo(target, {
-          offset: 0,
-          duration: 2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        })
-      }
-    })
-  });
-}
+// Gestion des liens d'ancrage
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute('href'))
+    if (target) {
+      lenis.scrollTo(target, {
+        offset: 0,
+        duration: 2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      })
+    }
+  })
+});
+// }
 
 /**
 * Works list horizontal scroll
@@ -294,3 +294,157 @@ window.addEventListener("resize", () => {
 // window.onbeforeunload = function () {
 //   window.scrollTo(0, 0);
 // }
+
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true,
+});
+renderer.setClearColor(0x000000, 0);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.physicallyCorrectLights = true;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+document.querySelector(".model").appendChild(renderer.domElement);
+
+let lights = {};
+
+// Key light - strong directional from upper left (mimicking the photo)
+lights.key = new THREE.DirectionalLight(0xfff8e7, 2.5);
+lights.key.position.set(-4, 6, 3);
+lights.key.castShadow = true;
+lights.key.shadow.mapSize.width = 4096;
+lights.key.shadow.mapSize.height = 4096;
+lights.key.shadow.camera.near = 1;
+lights.key.shadow.camera.far = 20;
+lights.key.shadow.camera.left = -5;
+lights.key.shadow.camera.right = 5;
+lights.key.shadow.camera.top = 5;
+lights.key.shadow.camera.bottom = -5;
+lights.key.shadow.bias = -0.0005;
+lights.key.shadow.radius = 8;
+scene.add(lights.key);
+
+// Fill light - softer from right side
+lights.fill = new THREE.DirectionalLight(0xe8f4ff, 0.9);
+lights.fill.position.set(3, 2, 2);
+scene.add(lights.fill);
+
+// Rim light - from behind to separate from background
+lights.rim = new THREE.DirectionalLight(0xffffff, 0.8);
+lights.rim.position.set(1, 4, -3);
+scene.add(lights.rim);
+
+// Very subtle ambient
+lights.ambient = new THREE.AmbientLight(0xffffff, 0.15);
+scene.add(lights.ambient);
+
+// Hidden dramatic light for special effects
+lights.dramatic = new THREE.SpotLight(0xffffff, 0, 15, Math.PI / 4, 0.3);
+lights.dramatic.position.set(-2, 5, 4);
+lights.dramatic.castShadow = true;
+scene.add(lights.dramatic);
+
+function basicAnimate() {
+  renderer.render(scene, camera);
+  requestAnimationFrame(basicAnimate);
+}
+basicAnimate();
+
+let model;
+const loader = new THREE.GLTFLoader();
+loader.load("./assets/model/david.glb", function (gltf) {
+  model = gltf.scene;
+  model.traverse((node) => {
+    if (node.isMesh) {
+      if (node.material) {
+        node.material = new THREE.MeshPhongMaterial({
+          // color: 0xf8f6f0,
+          color: 0xf0f1ea,
+          shininess: 15,
+          specular: 0x222222,
+          transparent: false
+        });
+      }
+      node.castShadow = true;
+      node.receiveShadow = true;
+    }
+  });
+
+  const box = new THREE.Box3().setFromObject(model);
+  const center = box.getCenter(new THREE.Vector3());
+  model.position.sub(center);
+  scene.add(model);
+
+  const size = box.getSize(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z);
+  camera.position.z = maxDim * 2;
+  camera.position.y = maxDim * 0.7;
+
+
+  // model.scale.set(0, 0, 0);
+  model.scale.set(2, 2, 2)
+  model.scale.set(1.75, 1.75, 1.75)
+
+  model.rotation.set(0, 0.5, 0);
+
+  // playInitialAnimation();
+
+  cancelAnimationFrame(basicAnimate);
+  animate();
+});
+
+const floatAmplitude = 0.2;
+const floatSpeed = 1.5;
+const rotationSpeed = 0.3;
+let isFloating = true;
+let currentScroll = 0;
+
+const totalScrollHeight =
+  document.documentElement.scrollHeight - window.innerHeight;
+
+function playInitialAnimation() {
+  if (model) {
+    gsap.to(model.scale, {
+      x: 1,
+      y: 1,
+      z: 1,
+      duration: 1,
+      ease: "power2.out",
+    });
+  }
+}
+
+lenis.on("scroll", (e) => {
+  currentScroll = e.scroll;
+});
+
+function animate() {
+  if (model) {
+    if (isFloating) {
+      const floatOffset =
+        Math.sin(Date.now() * 0.001 * floatSpeed) * floatAmplitude;
+      model.position.y = floatOffset;
+    }
+
+    const scrollProgress = Math.min(currentScroll / totalScrollHeight, 1);
+
+    const baseTilt = 0.5;
+    model.rotation.y = scrollProgress * Math.PI * 6 + baseTilt;
+  }
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}

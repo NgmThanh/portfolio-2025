@@ -108,6 +108,13 @@ body::-webkit-scrollbar-thumb {
 
 /* ==================== GLOBAL ==================== */
 
+.model {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
 .global-nav {
   position: fixed;
   top: 0;
