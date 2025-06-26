@@ -371,8 +371,7 @@ loader.load("./assets/model/david.glb", function (gltf) {
     if (node.isMesh) {
       if (node.material) {
         node.material = new THREE.MeshPhongMaterial({
-          // color: 0xf8f6f0,
-          color: 0xf0f1ea,
+          color: 0xf8f6f0,
           shininess: 15,
           specular: 0x222222,
           transparent: false
@@ -418,9 +417,9 @@ const totalScrollHeight =
 function playInitialAnimation() {
   if (model) {
     gsap.to(model.scale, {
-      x: 1,
-      y: 1,
-      z: 1,
+      x: 2,
+      y: 2,
+      z: 2,
       duration: 1,
       ease: "power2.out",
     });
@@ -443,6 +442,8 @@ function animate() {
 
     const baseTilt = 0.5;
     model.rotation.y = scrollProgress * Math.PI * 6 + baseTilt;
+    // set camera position with this pattern : middle then left, then middle position
+
   }
 
   renderer.render(scene, camera);
