@@ -62,20 +62,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function initHorizontalScroll() {
   const content = gsap.utils.toArray(".horizontal-scroll .horizontal-item");
 
-  if (window.innerWidth > 767) {
-    gsap.to(content, {
-      xPercent: -100 * (content.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".horizontal-scroll",
-        pin: true,
-        scrub: 0.5,
-        start: "top top",
-        end: () => `+=${100 * (content.length)}%`,
-        invalidateOnRefresh: true,
-      },
-    });
-  }
+  // if (window.innerWidth > 767) {
+  gsap.to(content, {
+    xPercent: -100 * (content.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".horizontal-scroll",
+      pin: true,
+      scrub: 0.5,
+      start: "top top",
+      end: () => `+=${100 * (content.length)}%`,
+      invalidateOnRefresh: true,
+    },
+  });
+  // }
 }
 
 /**

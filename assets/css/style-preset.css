@@ -115,6 +115,19 @@
     /* --typography--font-size--text-large: max(18px, 1em);
     --typography--font-size--text-medium: max(16px, 0.875em);
     --typography--font-size--text-small: max(14px, 0.75em); */
+
+    /* SPACING */
+    --spacing--page-padding: var(--primitives--24);
+    --spacing--grid-gap: var(--primitives--24);
+    --spacing--3xl: var(--primitives--200);
+    --spacing--2xl: var(--primitives--160);
+    --spacing--xl: var(--primitives--120);
+    --spacing--lg: var(--primitives--80);
+    --spacing--md: var(--primitives--64);
+    --spacing--sm: var(--primitives--40);
+    --spacing--xs: var(--primitives--32);
+    --spacing--2xs: var(--primitives--24);
+    --spacing--3xs: var(--primitives--16);
   }
 }
 
@@ -174,7 +187,7 @@
 /* Mobile Portrait */
 @media screen and (max-width: 479px) {
   :root {
-    --size-container-ideal: 420;
+    --size-container-ideal: 600;
     /* screen-size in design - no px */
     --size-container-min: 320px;
     --size-container-max: 479px;
@@ -456,7 +469,6 @@ body {
 html.lenis,
 html.lenis body {
   height: auto;
-  /* overflow-x: hidden; */
 }
 
 .lenis:not(.lenis-autoToggle).lenis-stopped {
