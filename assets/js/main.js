@@ -15,6 +15,7 @@ function initScript() {
   initScrollHighlight();
   initStorytellingScroll();
   initHorizontalScroll();
+  initServicesItemTransition();
   initPinScrollHighlight();
   initRollingText();
 }
@@ -204,6 +205,34 @@ function initStorytellingScroll() {
         scale: 50,
         ease: "none",
       });
+    });
+  });
+}
+
+/**
+ * Services item transition on scroll
+ */
+function initServicesItemTransition() {
+  const servicesItems = document.querySelectorAll('.services-item');
+  const overlays = document.querySelectorAll('.services-item-overlay');
+
+  servicesItems.forEach((item, index) => {
+    if (index === servicesItems.length - 1) return; // Exclude last item
+    gsap.to(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: "bottom bottom",
+        end: "+=100%",
+        scrub: true,
+        onUpdate: self => {
+          if (overlays[index]) {
+            overlays[index].style.opacity = self.progress;
+          }
+        }
+      },
+      scale: 0.85,
+      transform: "rotateX(10deg) rotateY(-15deg)",
+      ease: "none",
     });
   });
 }
