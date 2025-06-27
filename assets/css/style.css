@@ -354,6 +354,7 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--color-neutral-900);
   position: relative;
   z-index: 2;
+  overflow: hidden;
 }
 
 .about-introduction {
@@ -421,8 +422,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* ==================== STORYTELLING SECTION ==================== */
-
 #storytelling {
   width: 100%;
   height: 100svh;
@@ -453,7 +452,7 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
 }
 
-#storytelling .circle-transition {
+.circle-transition {
   width: 100px;
   height: 100px;
   position: absolute;
