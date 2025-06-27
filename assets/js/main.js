@@ -170,7 +170,7 @@ function initStorytellingScroll() {
     scrollTrigger: {
       trigger: '#storytelling',
       start: 'top top',
-      end: '+=400%',
+      end: '+=300%',
       markers: true,
       pin: true,
       scrub: 0.5
