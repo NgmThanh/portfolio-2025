@@ -18,6 +18,7 @@ function initScript() {
   initServicesItemTransition();
   initPinScrollHighlight();
   initRollingText();
+  initMouseTrail();
 }
 
 /**
@@ -250,11 +251,11 @@ function initPinScrollHighlight() {
         scrollTrigger: {
           trigger: "#action",
           start: 'top top',
-          end: '+=300%',
+          end: '+=200%',
           scrub: 1,
           pin: true,
         },
-        duration: 3,
+        duration: 2,
         opacity: 0.2,
         stagger: 0.2,
         ease: "none",
@@ -309,6 +310,75 @@ function initRollingText() {
     return tl;
   }
 }
+
+function initMouseTrail() {
+  const images = [
+    "assets/img/img1.jpg",
+    "assets/img/img2.jpg",
+    "assets/img/img3.jpg",
+    "assets/img/img4.jpg",
+    "assets/img/img5.jpg",
+    "assets/img/img6.jpg",
+    "assets/img/img7.jpg",
+    "assets/img/img8.jpg",
+    "assets/img/img9.jpg",
+    "assets/img/img10.jpg",
+  ];
+
+  const container = document.querySelector("#contact");
+
+  let currentImageIndex = 0;
+  let lastX = 0;
+  let lastY = 0;
+  let distanceThreshold = 200; // Distance threshold to change image
+
+  container.addEventListener("mousemove", (event) => {
+    const dx = event.clientX - lastX;
+    const dy = event.clientY - lastY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance > distanceThreshold) {
+      createImageTrail(event.clientX, event.clientY);
+      lastX = event.clientX;
+      lastY = event.clientY;
+    }
+  });
+
+  function createImageTrail(x, y) {
+    const img = document.createElement("img");
+    img.src = images[currentImageIndex];
+    img.classList.add("image-trail");
+    container.appendChild(img);
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+
+    gsap.set(img, {
+      x: x,
+      y: y,
+      scale: 0,
+      opacity: 0,
+      rotation: gsap.utils.random(-20, 20),
+    });
+
+    gsap.to(img, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+
+    gsap.to(img, {
+      scale: 0,
+      opacity: 1,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.in",
+      onComplete: () => {
+        img.remove();
+      }
+    });
+  }
+}
+
 
 /**
 * Page load actions

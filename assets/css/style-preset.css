@@ -1,8 +1,8 @@
 /* ==================== FONTS ==================== */
 
 @font-face {
-  font-family: "SangBleu Versailles";
-  src: url("../fonts/SangBleuVersailles-RegularItalic.otf") format("opentype");
+  font-family: "SangBleu Kingdom";
+  src: url("../fonts/SangBleuKingdom-RegularItalic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -73,7 +73,7 @@
 
   /* TYPOGRAPHY */
   --typography--font-family--heading-family: Bevietnampro, Arial, sans-serif;
-  --typography--font-family--heading-family-swap: "SangBleu Versailles", Serif, sans-serif;
+  --typography--font-family--heading-family-swap: "SangBleu Kingdom", Serif, sans-serif;
   --typography--font-family--paragraph-family: Bevietnampro, Arial, sans-serif;
   --typography--font-size--display: 8.5em;
   --typography--font-size--h1: 7em;
@@ -89,7 +89,7 @@
   --typography--font-size--text-medium: 1em;
   --typography--font-size--text-small: 0.875em;
 
-  --typography--font-size--weight-regular: 400;
+  --typography--font-size--weight-regular: 300;
   --typography--font-size--weight-medium: 500;
   --typography--font-size--weight-semi-bold: 600;
   --typography--font-size--weight-bold: 700;
