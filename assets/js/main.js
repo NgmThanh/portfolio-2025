@@ -65,7 +65,7 @@ function initSmoothScroll() {
 function initHorizontalScroll() {
   const content = gsap.utils.toArray(".horizontal-scroll .horizontal-item");
 
-  // if (window.innerWidth > 767) {
+  // Horizontal scroll for items
   gsap.to(content, {
     xPercent: -100 * (content.length - 1),
     ease: "none",
@@ -76,9 +76,55 @@ function initHorizontalScroll() {
       start: "top top",
       end: () => `+=${100 * (content.length)}%`,
       invalidateOnRefresh: true,
+      snap: {
+        snapTo: (value) => {
+          const snapPoints = content.map((_, i) => i / (content.length - 1));
+          let closest = snapPoints.reduce((prev, curr) =>
+            Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+          );
+          return closest;
+        },
+        duration: 0.6,
+        ease: "power2.inOut"
+      },
     },
   });
-  // }
+
+  // Animate projectTitle yPercent based on scroll position
+  const projectTitle = document.querySelector(".works-title-list");
+  const worksNumber = document.querySelector(".works-number-list");
+
+  if (!(projectTitle && content.length > 1)) return;
+
+  gsap.to(projectTitle, {
+    yPercent: () => {
+      // -100 * (number of items scrolled)
+      return -100 * (content.length - 1);
+    },
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".horizontal-scroll",
+      start: "top top",
+      end: () => `+=${100 * (content.length)}%`,
+      scrub: 0,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  gsap.to(worksNumber, {
+    yPercent: () => {
+      // -100 * (number of items scrolled)
+      return -100 * (content.length - 1);
+    },
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".horizontal-scroll",
+      start: "top top",
+      end: () => `+=${100 * (content.length)}%`,
+      scrub: 0,
+      invalidateOnRefresh: true,
+    },
+  });
 }
 
 /**
@@ -188,16 +234,16 @@ function initStorytellingScroll() {
       });
 
       // Storytelling title reveal animation
-      tl.fromTo(split.chars, {
-        opacity: 0.4,
-        yPercent: 125,
-      }, {
-        opacity: 1,
-        yPercent: 0,
-        duration: durationTitleDefault,
-        stagger: staggerTitleDefault,
-        ease: "power3.out",
-      });
+      // tl.fromTo(split.chars, {
+      //   opacity: 0.4,
+      //   yPercent: 125,
+      // }, {
+      //   opacity: 1,
+      //   yPercent: 0,
+      //   duration: durationTitleDefault,
+      //   stagger: staggerTitleDefault,
+      //   ease: "power3.out",
+      // });
 
       tl.fromTo('.circle-transition', {
         scale: 0,
@@ -251,7 +297,7 @@ function initServicesItemTransition() {
           }
         },
       },
-      scale: 0.85,
+      scale: 0.9,
       transform: "rotateX(10deg) rotateY(-15deg)",
       ease: "none",
     });
@@ -385,7 +431,7 @@ function initMouseTrail() {
     gsap.to(img, {
       scale: 1,
       opacity: 1,
-      duration: 0.6,
+      duration: 0.4,
       ease: "power2.out",
     });
 
@@ -393,7 +439,7 @@ function initMouseTrail() {
       scale: 0,
       opacity: 0,
       duration: 1,
-      delay: 0.6,
+      delay: 0.4,
       ease: "power2.in",
       onComplete: () => {
         img.remove();
