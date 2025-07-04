@@ -15,6 +15,7 @@ function initScript() {
   initScrollHighlight();
   initStorytellingScroll();
   initHorizontalScroll();
+  initParallaxServicesBg();
   initServicesItemTransition();
   initPinScrollHighlight();
   initRollingText();
@@ -172,7 +173,6 @@ function initStorytellingScroll() {
       trigger: '#storytelling',
       start: 'top top',
       end: '+=300%',
-      markers: true,
       pin: true,
       scrub: 0.5
     }
@@ -211,6 +211,26 @@ function initStorytellingScroll() {
 }
 
 /**
+ * Services parallax bg setup
+ */
+function initParallaxServicesBg() {
+  gsap.utils.toArray(".services-bg-img").forEach(function (container) {
+    let image = container.querySelector(".services-bg-img img");
+
+    gsap.to(image, {
+      y: () => image.offsetHeight - container.offsetHeight,
+      ease: "none",
+      scrollTrigger: {
+        trigger: container,
+        scrub: true,
+        pin: false,
+        invalidateOnRefresh: true
+      },
+    });
+  });
+}
+
+/**
  * Services item transition on scroll
  */
 function initServicesItemTransition() {
@@ -229,7 +249,7 @@ function initServicesItemTransition() {
           if (overlays[index]) {
             overlays[index].style.opacity = self.progress;
           }
-        }
+        },
       },
       scale: 0.85,
       transform: "rotateX(10deg) rotateY(-15deg)",
@@ -311,6 +331,9 @@ function initRollingText() {
   }
 }
 
+/**
+* Contact section mouse trail effect
+*/
 function initMouseTrail() {
   const images = [
     "assets/img/img1.jpg",
@@ -352,8 +375,8 @@ function initMouseTrail() {
     currentImageIndex = (currentImageIndex + 1) % images.length;
 
     gsap.set(img, {
-      x: x,
-      y: y,
+      x: x - img.width / 2,
+      y: y - img.height / 2,
       scale: 0,
       opacity: 0,
       rotation: gsap.utils.random(-20, 20),
@@ -362,15 +385,15 @@ function initMouseTrail() {
     gsap.to(img, {
       scale: 1,
       opacity: 1,
-      duration: 0.3,
+      duration: 0.6,
       ease: "power2.out",
     });
 
     gsap.to(img, {
       scale: 0,
-      opacity: 1,
+      opacity: 0,
       duration: 1,
-      delay: 0.3,
+      delay: 0.6,
       ease: "power2.in",
       onComplete: () => {
         img.remove();
@@ -378,7 +401,6 @@ function initMouseTrail() {
     });
   }
 }
-
 
 /**
 * Page load actions

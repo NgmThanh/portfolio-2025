@@ -573,23 +573,25 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
 }
 
 .services-bg-img {
   width: 100%;
   height: 100svh;
   position: absolute;
-  top: 0;
-  left: 0;
   z-index: -1;
   filter: brightness(60%);
+  overflow: hidden;
 }
 
 .services-bg-img img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 140%;
   object-fit: cover;
+  object-position: center;
 }
 
 .services-list {
@@ -711,14 +713,14 @@ body::-webkit-scrollbar-thumb {
   padding-bottom: var(--spacing--md);
   position: relative;
   z-index: 2;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .image-trail {
   position: absolute;
   inset: 0;
-  width: 12em;
-  aspect-ratio: 3 / 4;
+  width: 20em;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   opacity: 0;
   pointer-events: none;
